@@ -2,8 +2,10 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CatsModule } from './cats/cats.module';
 import { ConfigModule } from '@nestjs/config';
+import { EventHandlerModule } from './event-handler/event-handler.module';
+import { OrderModule } from './order/order.module';
+import { CustomerModule } from './customer/customer.module';
 
 @Module({
   imports: [
@@ -11,7 +13,10 @@ import { ConfigModule } from '@nestjs/config';
     MongooseModule.forRoot(
       `mongodb://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?authSource=admin`,
     ),
-    CatsModule,
+    OrderModule,
+    EventHandlerModule,
+    OrderModule,
+    CustomerModule,
   ],
   controllers: [AppController],
   providers: [AppService],
