@@ -22,6 +22,6 @@ export class CustomerService {
   }
 
   async findOne(id: string) {
-    return this.orderHistoryModel.find({ customerId: id });
+    return this.orderHistoryModel.findOne({ customerId: id });
   }
 }
